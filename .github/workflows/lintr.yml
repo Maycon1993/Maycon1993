@@ -1,0 +1,29 @@
+- name: Upload a Build Artifact
+  uses: actions/upload-artifact@v4.5.0
+  with:
+    # Nome do artefato
+    name: meu-artefato # opcional, o padrão é 'artifact'
+    # Caminho do arquivo, diretório ou padrão de coringa a ser carregado
+    path: caminho/do/seu/arquivo
+    # Comportamento desejado se nenhum arquivo for encontrado usando o caminho fornecido.
+    # Opções disponíveis:
+    # - warn: Exibe um aviso, mas não falha a ação (padrão)
+    # - error: Falha a ação com uma mensagem de erro
+    # - ignore: Não exibe avisos ou erros, a ação não falha
+    if-no-files-found: warn # opcional, padrão é 'warn'
+    # Duração após a qual o artefato irá expirar em dias. 0 significa usar a retenção padrão.
+    # Mínimo de 1 dia. Máximo de 90 dias, a menos que seja alterado na página de configurações do repositório.
+    retention-days: 30 # opcional
+    # O nível de compressão para Zlib a ser aplicado ao arquivo do artefato. O valor pode variar de 0 a 9:
+    # - 0: Sem compressão
+    # - 1: Melhor velocidade
+    # - 6: Compressão padrão (mesmo que GNU Gzip)
+    # - 9: Melhor compressão
+    # Níveis mais altos resultarão em melhor compressão, mas levarão mais tempo para concluir. Para arquivos grandes que não são facilmente comprimidos, um valor de 0 é recomendado para uploads significativamente mais rápidos.
+    compression-level: 6 # opcional, padrão é '6'
+    # Se verdadeiro, um artefato com um nome correspondente será excluído antes que um novo seja carregado.
+    # Se falso, a ação falhará se um artefato com o nome fornecido já existir. Não falha se o artefato não existir.
+    overwrite: false # opcional, padrão é 'false'
+    # Se verdadeiro, arquivos ocultos serão incluídos no artefato.
+    # Se falso, arquivos ocultos serão excluídos do artefato.
+    include-hidden-files: false # opcional, padrão é 'false'
